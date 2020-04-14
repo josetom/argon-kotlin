@@ -1,0 +1,82 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: http://localhost:8080/
+info:
+  description: Chummy Tummies APIs
+  version: "1.0.0"
+  title: Chummy Tummies
+  contact:
+    email: jose@chummytummies.com
+tags:
+  - name: internal
+    description: Only For internal consumption
+  - name: external
+    description: Operations available for external consumption
+paths:
+  /internal/login:
+    post:
+      tags:
+        - internal
+      summary: Logs the user in
+      operationId: userLogin
+      description: Logs the user in
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '400':
+          description: 'Invalid email / password'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLoginRequest'
+        description: Logs the user in
+components:
+  schemas:
+    UserLoginRequest:
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: jose@test.com
+        phone:
+          type: string
+          example: 408-867-5309
+        password:
+          type: string
+          example: p@$$w0rd
+    User:
+      required:
+        - id
+        - name
+        - email
+        - phone
+      properties:
+        id:
+          type: string
+          example: user1
+        name:
+          type: string
+          example: Jose Tom
+        email:
+          type: string
+          format: email
+          example: jose@test.com
+        phone:
+          type: string
+          example: 408-867-5309
+        password:
+          type: string
+          example: p@$$w0rd
+      type: object
