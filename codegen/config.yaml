@@ -1,0 +1,4 @@
+packageName: com.chummy_tummies
+#serviceImplementation: true
+serviceInterface: true
+#interfaceOnly: true

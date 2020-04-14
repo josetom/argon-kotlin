@@ -17,11 +17,17 @@ repositories {
 
 kotlin.sourceSets.create("generated")
 
-sourceSets {
-	main {
-		java {
-			srcDir("src/generated/kotlin")
-		}
+//sourceSets {
+//	main {
+//		java {
+//			srcDir("src/generated/kotlin")
+//		}
+//	}
+//}
+
+sourceSets.main {
+	withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class) {
+		kotlin.srcDirs("src/main/kotlin", "src/generated/kotlin")
 	}
 }
 
